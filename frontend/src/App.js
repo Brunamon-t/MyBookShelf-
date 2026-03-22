@@ -54,7 +54,6 @@ function App() {
     }
   };
 
-  // --- NOVA FUNÇÃO DE RECOMENDAÇÃO (IA) ---
   const getAiRecommendation = async () => {
     if (myLibrary.length === 0) {
       alert("Adiciona alguns livros primeiro para a IA te conhecer!");
