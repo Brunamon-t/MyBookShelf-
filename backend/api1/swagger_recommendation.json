@@ -1,0 +1,47 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Service_Recommendation API",
+    "description": "Microserviço de IA para geração de sugestões literárias personalizadas.",
+    "version": "1.1.0"
+  },
+  "paths": {
+    "/getAIRecommendation": {
+      "post": {
+        "summary": "Gera uma sugestão com base nos livros da estante",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "books": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "description": "Lista de títulos na estante do utilizador"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Sugestão de leitura gerada pela IA",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "recommendation": { "type": "string" }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
