@@ -2,14 +2,12 @@ const { onCall, HttpsError } = require("firebase-functions/v2/https");
 const admin = require("firebase-admin");
 const axios = require("axios");
 
-// Inicializa o Admin do Firebase
 if (admin.apps.length === 0) {
   admin.initializeApp();
 }
 
 // ==========================================================
-// CONFIGURAÇÃO DA IA (OPENROUTER)
-// Substitui pelo teu código de API da OpenRouter
+
 const OPENROUTER_API_KEY = "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";
 // ==========================================================
 
@@ -67,7 +65,6 @@ exports.service_recommendation = onCall({ cors: true }, async (request) => {
   const listaTitulos = myBooks.map(b => b.title).join(", ");
 
   try {
-    // Chamada à API Externa (Infrastructure Layer)
     const response = await axios.post(
       "https://openrouter.ai/api/v1/chat/completions",
       {
@@ -87,14 +84,12 @@ exports.service_recommendation = onCall({ cors: true }, async (request) => {
       }
     );
 
-    // Valor Acrescentado: Resposta da IA processada
     const sugestaoIA = response.data.choices[0].message.content;
     return { suggestion: sugestaoIA };
 
   } catch (error) {
     console.error("Erro na Integração IA:", error.response?.data || error.message);
-    
-    // Fallback: Se a IA falhar, o sistema mantém-se funcional (Gestão de Risco)
+
     return { suggestion: "A IA está a processar muitos pedidos. Tenta de novo em instantes!" };
   }
 });
