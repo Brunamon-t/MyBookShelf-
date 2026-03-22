@@ -42,7 +42,7 @@ Para configurar o ambiente de desenvolvimento e executar a aplicação localment
 
 ### 1. Clonar o Repositório
 ```bash
-git clone [https://github.com/teu-utilizador/MyBookShelf_Project.git](https://github.com/teu-utilizador/MyBookShelf_Project.git)
+git clone [https://github.com/Brunamon-t/MyBookShelf-](https://github.com/Brunamon-t/MyBookShelf-)
 cd MyBookShelf_Project
 
 # Navegar até à pasta das funções
